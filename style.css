@@ -30,6 +30,16 @@ body {
     justify-content: right;
 }
 
+#footer {
+    background-color: lightgray;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#loginfo {
+    margin-right: 1%;
+}
+
 .cblock {
     margin: auto;
     position: relative;

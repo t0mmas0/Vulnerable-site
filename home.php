@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["username"]))
+        $_SESSION["username"] = "Guest";
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -14,7 +19,7 @@
                 <div id="navcentre">
                     <h4>Simple Moodle Improved</h4></div>
                 <div id="navright">
-                    <a href="home.php" style="margin-right: 1%">Login</a>
+                    <a href="login.html" style="margin-right: 1%">Login</a>
                     <a href="signup.html">Signup</a>
                 </div>
             </div>
@@ -36,5 +41,11 @@
                 Vestibulum sit amet felis at libero congue vehicula eu in magna. Morbi venenatis et felis sed posuere. Morbi ut turpis sodales, hendrerit risus ac, vehicula ipsum. Morbi mollis dapibus est sed facilisis. Nullam tempus interdum felis ut convallis. Maecenas vel velit consequat, porta odio a, molestie libero. Nulla augue quam, aliquam vehicula luctus quis, congue sit amet massa. Nulla iaculis tortor eu tincidunt tincidunt. Sed urna leo, elementum non semper in, pretium varius eros. Mauris id feugiat mi. Nunc fermentum fermentum ipsum, volutpat porttitor risus pulvinar ac. In id ligula a enim dictum elementum ut et sapien. Praesent vitae nunc a arcu luctus consequat. Pellentesque id bibendum risus, et faucibus orci.
             </p>
         </div>
+        <footer id="footer">
+            <div id="loginfo">
+                Logged in as: <?php echo $_SESSION["username"]."."; ?>
+                <a href="logout.php">Logout.</a>
+            </div>
+        </footer>
     </body>
 </html>
