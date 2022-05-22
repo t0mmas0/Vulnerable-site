@@ -1,7 +1,9 @@
+/* Corpo della pagina */
 body {
     margin: 0;
+    background-color: #f8f8f8;
 }
-
+/* Barra di navigazione */
 #navbar {
     width: 100%;
     height: 64px;
@@ -29,8 +31,34 @@ body {
     display: flex;
     justify-content: right;
 }
+/* ----------------------- */
 
+/* Blocco chiaro contenitore */
+.card {
+    padding: 1px;
+    width: 66%;
+    margin: auto;
+    margin-top: 16px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px gray, -1px -1px 10px gray;
+}
+
+.content {
+    padding: 1px;
+    margin: 16px;
+}
+
+.article {
+    margin-top: 0px;
+    text-align: justify;
+}
+/* ----------------------- */
+
+/* Piè di pagina */
 #footer {
+    padding: 1px;
+    margin-top: 16px;
     background-color: lightgray;
     display: flex;
     justify-content: flex-end;
@@ -39,7 +67,9 @@ body {
 #loginfo {
     margin-right: 1%;
 }
+/* ----------------------- */
 
+/* Blocco schermata login */
 .cblock {
     margin: auto;
     position: relative;
@@ -61,3 +91,4 @@ body {
     bottom: 0;
     right: 0;
 }
+/* ----------------------- */
