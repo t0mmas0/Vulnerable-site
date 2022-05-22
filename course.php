@@ -2,6 +2,20 @@
 session_start();
 if (!isset($_SESSION["username"]))
     $_SESSION["username"] = "Guest";
+
+function addcontent(){
+    if (isset($_POST["content"]) and isset($_GET["id"])){
+        //Connect to db
+        $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
+        //Insert new content
+        $store = $db->prepare("INSERT INTO CourseContent (courseID, content) VALUES (:id, :content);");
+        $store->bindValue(":id", $_GET["id"], SQLITE3_INTEGER);
+        $store->bindValue(":content", $_POST["content"], SQLITE3_TEXT);
+        $query_result = $store->execute();
+        echo "<script>alert('Content added!')</script>";
+    }
+}
+addcontent();
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,7 +57,7 @@ if (!isset($_SESSION["username"]))
         //Connect to database
         $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
         //Get course title
-        $query_result = $db->query("SELECT * FROM COURSES WHERE ID=" . $_GET["id"] . ";");
+        $query_result = $db->query("SELECT * FROM Courses WHERE ID=" . $_GET["id"] . ";");
         //Expected only one or zero rows
         $row = $query_result->fetchArray();
         if (!$row){
@@ -51,6 +65,10 @@ if (!isset($_SESSION["username"]))
             return;
         }
 
+        //Save course's administartor for later use
+        $administrator = $row[4];
+
+        //Show title and description of the course
         echo '
                <div class="card">
                     <div class="content">
@@ -59,23 +77,46 @@ if (!isset($_SESSION["username"]))
                     </div>
                </div> ' ;
 
-        //TODO Implement content database and retrieve data
+        //Show course content
+        $query_result = $db->query("SELECT * FROM CourseContent WHERE courseID=" . $_GET["id"] . ";");
+        //Each row is a new content to add to the course page
+        $row = $query_result->fetchArray();
+        while ($row){
+            //If visibility is 0 (false), skip to next element
+            if (!$row[3]){
+                $row = $query_result->fetchArray();
+                continue;
+            }
+            echo '
+               <div class="card">
+                    <div class="content">
+                        ' . $row[2] . '
+                    </div>
+               </div> ' ;
+            $row = $query_result->fetchArray();
+        }
+
+        //If user is an administrator of the course, show another section to add content
+        if ($_SESSION["username"] == $administrator){
+            echo '
+                <div class="card">
+                    <div class="content">
+                        <form action="" method="post">
+                            <label>New content to add <br>
+                                <input type="text" name="content" style="width: 100%; height: 100px">
+                            </label>
+                            <input type="submit" value="Add">
+                        </form>
+                    </div>
+                </div>
+                    ';
+        }
     }
 
     showContent();
     ?>
 
-    <div class="card">
-        <div class="content">
-            pippero
-        </div>
-    </div>
 
-    <div class="card">
-        <div class="content">
-            pippero
-        </div>
-    </div>
 
     <footer id="footer">
         <div id="loginfo">
