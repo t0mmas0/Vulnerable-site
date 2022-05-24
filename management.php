@@ -1,7 +1,13 @@
 <?php
 session_start();
-if (!isset($_SESSION["username"]))
+if (!isset($_SESSION["username"])) {
     $_SESSION["username"] = "Guest";
+    die("You cannot use this resource.");
+}
+if ($_SESSION["username"] != "administrator"){
+    die("You cannot use this resource.");
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,7 +38,7 @@ if (!isset($_SESSION["username"]))
 </header>
 <div class="card">
     <div class="content">
-        <p>Use this panel to add or remove a course from the course database</p>
+        <p>Use this panel to add a course from the course database</p>
         <p>Add course</p>
         <form action="add-course.php" method="post">
             <label>
