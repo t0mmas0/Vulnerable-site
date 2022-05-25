@@ -3,6 +3,9 @@ session_start();
 if (!isset($_SESSION["username"]))
     $_SESSION["username"] = "Guest";
 
+if ($_SESSION["username"] == "Guest")
+    die( "You need to log in to see the forum messages.");
+
 function sendMessage(){
     if (isset($_POST["username"]) && isset($_POST["message"])){
         $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);

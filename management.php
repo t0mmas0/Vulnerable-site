@@ -1,12 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset($_SESSION["username"]))
     $_SESSION["username"] = "Guest";
+
+if ($_SESSION["username"] != "administrator")
     die("You cannot use this resource.");
-}
-if ($_SESSION["username"] != "administrator"){
-    die("You cannot use this resource.");
-}
+
 
 function addCourse(){
     if (isset($_POST["course-name"]) and isset($_POST["course-description"])){
