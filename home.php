@@ -18,8 +18,13 @@
                     <a href="courses.php" style="margin-right: 1%">Courses</a>
                     <?php
                         if ($_SESSION["username"] == "administrator"){
-                            echo '<a href="management.php">Management</a>';
+                            echo '<a href="management.php" style="margin-right: 1%">Management</a>';
                         }
+                    ?>
+                    <?php
+                    if ($_SESSION["username"] != "Guest"){
+                        echo '<a href="forum.php" style="margin-right: 1%">Forum</a>';
+                    }
                     ?>
                 </div>
                 <div id="navcentre">

@@ -24,7 +24,12 @@ if ($_SESSION["username"] != "administrator"){
             <a href="courses.php" style="margin-right: 1%">Courses</a>
             <?php
             if ($_SESSION["username"] == "administrator"){
-                echo '<a href="management.php">Management</a>';
+                echo '<a href="management.php" style="margin-right: 1%">Management</a>';
+            }
+            ?>
+            <?php
+            if ($_SESSION["username"] != "Guest"){
+                echo '<a href="forum.php" style="margin-right: 1%">Forum</a>';
             }
             ?>
         </div>
@@ -49,16 +54,6 @@ if ($_SESSION["username"] != "administrator"){
             <label>
                 Course description:
                 <input name="course-description" type="text">
-            </label>
-            <br>
-            <input type="submit" value="Submit">
-        </form>
-        <br><br>
-        <p>Remove course</p>
-        <form action="remove-course.php" method="post">
-            <label>
-                Course name:
-                <input name="course-name" type="">
             </label>
             <br>
             <input type="submit" value="Submit">

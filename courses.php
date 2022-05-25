@@ -16,7 +16,17 @@
             <div id="navbar">
                 <div id="navleft">
                     <a href="home.php" style="margin-right: 1%">Home</a>
-                    <a href="courses.php">Courses</a>
+                    <a href="courses.php" style="margin-right: 1%">Courses</a>
+                    <?php
+                    if ($_SESSION["username"] == "administrator"){
+                        echo '<a href="management.php" style="margin-right: 1%">Management</a>';
+                    }
+                    ?>
+                    <?php
+                    if ($_SESSION["username"] != "Guest"){
+                        echo '<a href="forum.php" style="margin-right: 1%">Forum</a>';
+                    }
+                    ?>
                 </div>
                 <div id="navcentre">
                     <h4>Simple Moodle Improved</h4></div>
