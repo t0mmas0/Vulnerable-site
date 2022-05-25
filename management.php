@@ -8,6 +8,21 @@ if ($_SESSION["username"] != "administrator"){
     die("You cannot use this resource.");
 }
 
+function addCourse(){
+    if (isset($_POST["course-name"]) and isset($_POST["course-description"])){
+        //Connect to db
+        $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
+        //Insert new content
+        $store = $db->prepare("INSERT INTO Courses (name, description, administator) VALUES (:name, :description, :administrator);");
+        $store->bindValue(":name", $_POST["course-name"], SQLITE3_TEXT);
+        $store->bindValue(":description", $_POST["course-description"], SQLITE3_TEXT);
+        $store->bindValue(":administrator", "teacher", SQLITE3_TEXT);
+        $store->execute();
+        echo "<script>alert('Content added!')</script>";
+    }
+}
+addCourse();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -45,7 +60,7 @@ if ($_SESSION["username"] != "administrator"){
     <div class="content">
         <p>Use this panel to add a course from the course database</p>
         <p>Add course</p>
-        <form action="add-course.php" method="post">
+        <form action="management.php" method="post">
             <label>
                 Course name:
                 <input name="course-name" type="text">
