@@ -52,7 +52,9 @@
         <footer id="footer">
             <div id="loginfo">
                 Logged in as: <?php echo $_SESSION["username"]."."; ?>
-                <a href="logout.php">Logout.</a>
+                <?php if ($_SESSION["username"] != "Guest") {
+                    echo "<a href='logout.php'>Logout.</a>";
+                }?>
             </div>
         </footer>
     </body>
