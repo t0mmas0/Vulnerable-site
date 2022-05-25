@@ -44,7 +44,7 @@
                 <p class="article">
                     Vivamus hendrerit eu justo vitae venenatis. Integer mattis id sapien et vestibulum. Cras iaculis, nisl non scelerisque convallis, est leo vulputate elit, vitae congue leo nunc sed odio. Integer in tristique lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum commodo mattis justo at vulputate. Sed non lacus sem. Nulla at eros tempus, feugiat est nec, ullamcorper ex. Nunc leo mi, interdum vel dignissim ac, malesuada facilisis elit.
                 </p>
-                <p class="article" style="margin-bottom: 0px">
+                <p class="article" style="margin-bottom: 0">
                     Vestibulum sit amet felis at libero congue vehicula eu in magna. Morbi venenatis et felis sed posuere. Morbi ut turpis sodales, hendrerit risus ac, vehicula ipsum. Morbi mollis dapibus est sed facilisis. Nullam tempus interdum felis ut convallis. Maecenas vel velit consequat, porta odio a, molestie libero. Nulla augue quam, aliquam vehicula luctus quis, congue sit amet massa. Nulla iaculis tortor eu tincidunt tincidunt. Sed urna leo, elementum non semper in, pretium varius eros. Mauris id feugiat mi. Nunc fermentum fermentum ipsum, volutpat porttitor risus pulvinar ac. In id ligula a enim dictum elementum ut et sapien. Praesent vitae nunc a arcu luctus consequat. Pellentesque id bibendum risus, et faucibus orci.
                 </p>
             </div>
