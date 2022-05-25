@@ -9,7 +9,9 @@
         $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
 
         //Controlliamo che il nome utente non sia già inserito
-        $result = $db->query("SELECT count() FROM Users WHERE Username = '" . $username . "'");
+        $query = $db->prepare("SELECT count() FROM Users WHERE Username = :username");
+        $query->bindValue(":username", $username, SQLITE3_TEXT);
+        $result = $query->execute();
         $row = $result->fetchArray();
         if ($row[0] > 0){
             echo "Username already taken. ";
@@ -17,8 +19,10 @@
         }
 
         //Registriamo l'utente
-        $insert_query = "INSERT INTO Users VALUES ('". $_POST["username"] ."','". $_POST["password"]."')" ;
-        $result = $db->exec($insert_query);
+        $query = $db->prepare("INSERT INTO Users VALUES (:username, :password)");
+        $query->bindValue(":username", $username, SQLITE3_TEXT);
+        $query->bindValue(":password", $password, SQLITE3_TEXT);
+        $result = $query->execute();
         if ($result)
             echo "Successfully registered. ";
         else

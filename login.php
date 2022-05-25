@@ -9,7 +9,10 @@
         $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
 
         //Controlliamo che il nome utente e la password corrispondano
-        $result = $db->query("SELECT * FROM Users WHERE Username = '" . $username . "' AND Password = '" . $password . "';");
+        $query = $db->prepare('SELECT * FROM Users WHERE Username = :username AND Password = :password ');
+        $query->bindValue(":username", $username, SQLITE3_TEXT);
+        $query->bindValue(":password", $password, SQLITE3_TEXT);
+        $result = $query->execute();
         $row = $result->fetchArray();
         if (!$row){
             echo "Incorrect login credentials. ";
