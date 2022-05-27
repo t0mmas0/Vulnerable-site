@@ -15,7 +15,7 @@
         $result = $query->execute();
         $row = $result->fetchArray();
         if (!$row){
-            echo "Incorrect login credentials. ";
+            echo '<h2 style="padding: 10px">Incorrect login credentials.</h2> ';
             return;
         }
 
@@ -28,10 +28,17 @@
 
         //Impostiamo variabili di sessione
         $_SESSION["username"] = $username;
-        echo "Succesfully logged in. ";
+        echo '<h2 style="padding: 10px"> Succesfully logged in.</h2> ';
     }
 
-    login();
-
 ?>
-<a href="home.php">Back to home.</a>
+<head>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body >
+<?php login();?>
+<div style="width: 115px; text-align: center; padding-left: 10px">
+    <a class="btn" href="index.php">Back to Home</a>
+</div>
+</body>
+

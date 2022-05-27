@@ -8,7 +8,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="courses.css">
         <title>Home</title>
     </head>
     <body>
@@ -18,9 +17,9 @@
                     <a class="btn" href="index.php" style="margin-right: 1%">Home</a>
                     <a class="btn" href="courses.php" style="margin-right: 1%">Courses</a>
                     <?php
-                    if ($_SESSION["username"] == "administrator"){
-                        echo '<a class="btn" href="management.php" style="margin-right: 1%">Management</a>';
-                    }
+                        if ($_SESSION["username"] == "administrator"){
+                            echo '<a class="btn" href="management.php" style="margin-right: 1%">Management</a>';
+                        }
                     ?>
                     <?php
                     if ($_SESSION["username"] != "Guest"){
@@ -36,30 +35,22 @@
                 </div>
             </div>
         </header>
-        <div id="grid">
-
-            <?php
-                //Apriamo il db
-                $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
-
-                //Leggiamo il numero di corsi
-                $query_result = $db->query("SELECT * FROM Courses;");
-                $row = $query_result->fetchArray();
-
-                while ($row) {
-                    /** @noinspection CssUnknownTarget */
-                    echo '<div class="grid-card">
-                                <div class="image-div" style="background-image:url(\''. $row[3] .' \') ;"> </div>
-                                <h3><a class="course-link" href="course.php?id='. $row[0] .'">' . $row[1] .'</a></h3>
-                                <p>' . $row[2] .'</p> </div>';
-                    $row = $query_result->fetchArray();
-                }
-            ?>
+        <div class="card">
+            <div class="content">
+                <p class="article">
+                Welcome to the home page of SecureClass a revolutionary software to manage all your lessons with security.
+                </p>
+                <p class="article">
+                Have a nice day.
+                </p>
+            </div>
         </div>
         <footer id="footer">
             <div id="loginfo">
                 Logged in as: <?php echo $_SESSION["username"]."."; ?>
-                <a href="logout.php">Logout.</a>
+                <?php if ($_SESSION["username"] != "Guest") {
+                    echo "<a href='logout.php'>Logout.</a>";
+                }?>
             </div>
         </footer>
     </body>

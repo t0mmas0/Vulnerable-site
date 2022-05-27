@@ -30,24 +30,24 @@ addcontent();
     <header>
         <div id="navbar">
             <div id="navleft">
-                <a href="home.php" style="margin-right: 1%">Home</a>
-                <a href="courses.php" style="margin-right: 1%">Courses</a>
+                <a href="index.php"class="btn">Home</a>
+                <a class="btn" href="courses.php">Courses</a>
                 <?php
                 if ($_SESSION["username"] == "administrator"){
-                    echo '<a href="management.php" style="margin-right: 1%">Management</a>';
+                    echo '<button class="btn" href="management.php" style="margin-right: 1%">Management</button>';
                 }
                 ?>
                 <?php
                 if ($_SESSION["username"] != "Guest"){
-                    echo '<a href="forum.php" style="margin-right: 1%">Forum</a>';
+                    echo '<button class="btn" href="forum.php" style="margin-right: 1%">Forum</button>';
                 }
                 ?>
             </div>
             <div id="navcentre">
                 <h4>Simple Moodle Improved</h4></div>
             <div id="navright">
-                <a href="login.html" style="margin-right: 1%">Login</a>
-                <a href="signup.html">Signup</a>
+                <a class="btn" href="login.html" style="margin-right: 1%">Login</a>
+                <a class="btn" href="signup.html">Signup</a>
             </div>
         </div>
     </header>
@@ -60,7 +60,9 @@ addcontent();
             return;
         }
         if ($_SESSION["username"] == "Guest"){
-            echo "You need to log in to access the course.";
+            echo '<h2>You need to log in to access the course.</h2>
+                <p>Please use the login button to log in</p>
+            ';
             return;
         }
 

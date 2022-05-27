@@ -32,4 +32,4 @@
     signup();
 
 ?>
-<a href="home.php">Back to home.</a>
+<a class="btn" href="index.php">Back to home.</a>

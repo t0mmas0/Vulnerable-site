@@ -4,7 +4,9 @@ if (!isset($_SESSION["username"]))
     $_SESSION["username"] = "Guest";
 
 if ($_SESSION["username"] == "Guest")
-    die( "You need to log in to see the forum messages.");
+    die('<h2> You need to log in to see the forum messages.</h2>
+        <p>Please use the login button to log in</p>
+    ');
 
 function sendMessage(){
     if (isset($_POST["username"]) && isset($_POST["message"])){
@@ -30,24 +32,24 @@ sendMessage();
         <header>
             <div id="navbar">
                 <div id="navleft">
-                    <a href="home.php" style="margin-right: 1%">Home</a>
-                    <a href="courses.php" style="margin-right: 1%">Courses</a>
+                    <a class="btn" href="index.php" style="margin-right: 1%">Home</a>
+                    <a class="btn" href="courses.php" style="margin-right: 1%">Courses</a>
                     <?php
                     if ($_SESSION["username"] == "administrator"){
-                        echo '<a href="management.php" style="margin-right: 1%">Management</a>';
+                        echo '<a class="btn" href="management.php" style="margin-right: 1%">Management</a>';
                     }
                     ?>
                     <?php
                     if ($_SESSION["username"] != "Guest"){
-                        echo '<a href="forum.php" style="margin-right: 1%">Forum</a>';
+                        echo '<a class="btn" href="forum.php" style="margin-right: 1%">Forum</a>';
                     }
                     ?>
                 </div>
                 <div id="navcentre">
                     <h4>Simple Moodle Improved</h4></div>
                 <div id="navright">
-                    <a href="login.html" style="margin-right: 1%">Login</a>
-                    <a href="signup.html">Signup</a>
+                    <a class="btn" href="login.html" style="margin-right: 1%">Login</a>
+                    <a class="btn" href="signup.html">Signup</a>
                 </div>
             </div>
         </header>
