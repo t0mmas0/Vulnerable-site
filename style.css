@@ -81,10 +81,10 @@ body {
 }
 
 .text {
-    display: flex;
+
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: relative;
     text-align: center;
     top: 0;
     left: 0;
@@ -97,9 +97,8 @@ body {
 .btn {
     text-decoration: none;
     position: relative;
-    display: block;
     margin: 5px;
-    padding: 3px 2px 3px 2px;
+    padding: 4px 3px 4px 3px;
 
     overflow: hidden;
 
@@ -157,3 +156,6 @@ body {
 }
 
 /*end of button css*/
+.title{
+    color: #f8f8f8;
+}
