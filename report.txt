@@ -1,0 +1,5 @@
+Project name: Simple Moodle Improved
+Description: The site allows regiastrated users to access content from a variety of courses. Users can register and access the content and the forum to ask user questions.
+             A teacher account is used to enter new content within a course, while an administrator account is used to enter new courses into the database.
+             The attacker's goal is to create a new course and find a way to insert an image called solution.jpg (residing in the images folder) within the created course.
+             The attack should be divided into two phases: first, one must try to exploit the forum to steal the php session from the administrator using the forum. Then, the attacker can use the administrative features and add a new course to the site. Finally, he must exploit a vulnerability in the user search panel to obtain the username and password of the teacher account. At this point he can log in and insert the requested image into the course content.
