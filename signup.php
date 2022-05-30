@@ -14,7 +14,7 @@ function signup(){
     $result = $query->execute();
     $row = $result->fetchArray();
     if ($row[0] > 0){
-        echo "Username already taken. ";
+        echo '<h2 style="padding: 10px">Username already taken.</h2>';
         return;
     }
 
