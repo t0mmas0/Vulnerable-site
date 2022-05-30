@@ -34,8 +34,8 @@ addCourse();
 <header>
     <div id="navbar">
         <div id="navleft">
-            <a href="index.php" style="margin-right: 1%">Home</a>
-            <a href="courses.php" style="margin-right: 1%">Courses</a>
+            <a class="btn" href="index.php" style="margin-right: 1%">Home</a>
+            <a class="btn" href="courses.php" style="margin-right: 1%">Courses</a>
             <?php
             if ($_SESSION["username"] == "administrator"){
                 echo '<a class="btn" href="management.php" style="margin-right: 1%">Management</a>';
