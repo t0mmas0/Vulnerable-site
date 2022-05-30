@@ -11,18 +11,20 @@ function findUser(){
     if (isset($_POST["username"])){
         //Connect to db
         $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
-        //Search for user
 
+        //Search for user
         $result = $db->query('SELECT Username FROM Users where Username LIKE ' ."'%" . $_POST["username"] . "%';");
 
         $row = $result->fetchArray();
+
         while ($row){
-            echo "Valore: " . $row[0];
+            echo $row[0] . "<br>";
+            $row = $result->fetchArray();
         }
 
-        echo "<script>alert('Query executed')</script>";
     }
 }
+
 findUser();
 
 ?>
