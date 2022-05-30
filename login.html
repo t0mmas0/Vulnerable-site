@@ -6,21 +6,36 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="cblock">
-        <div class="text">
-            <form action="login.php" method="post">
-                <p> From this webpage you can log into moodle</p>
-                <label>
-                    Username
-                    <input name="username" type="text">
-                </label><br>
-                <label>
-                    Password
-                    <input name="password" type="password">
-                </label><br>
-                <input type="submit" value="Submit"><br>
-            </form>
+<header>
+    <div id="navbar">
+        <div id="navleft">
+            <a class="btn" href="index.php" style="margin-right: 1%">Home</a>
+            <a class="btn" href="courses.php" style="margin-right: 1%">Courses</a>
+        </div>
+        <div id="navcentre">
+            <h2 class="title">Simple Improved Moodle</h2></div>
+        <div id="navright">
+            <a class="btn" href="signup.html">Signup</a>
         </div>
     </div>
+</header>
+ <!--class="cblock"-->
+    <div class="text" >
+        <form action="login.php" method="post" >
+            <h4> From this webpage you can log into moodle</h4><br>
+            <label>
+                Username:
+                <input name="username" type="text">
+            </label><br><br>
+            <label>
+                Password:
+                <input name="password" type="password">
+            </label><br> <br>
+            <label>
+            <input class="btn" type="submit" value="Submit"><br>
+            </label>
+        </form>
+    </div>
+
 </body>
 </html>

@@ -2,4 +2,6 @@
     session_start();
     session_unset();
     session_regenerate_id();
-    echo "Logged out."; ?> <a href="home.php">Back to home.</a>
+    echo '<h2> Logged out.</h2>';
+    ?>
+<a class="btn" href="index.php">Back to home.</a>

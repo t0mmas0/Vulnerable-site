@@ -34,24 +34,24 @@ addCourse();
 <header>
     <div id="navbar">
         <div id="navleft">
-            <a href="home.php" style="margin-right: 1%">Home</a>
+            <a href="index.php" style="margin-right: 1%">Home</a>
             <a href="courses.php" style="margin-right: 1%">Courses</a>
             <?php
             if ($_SESSION["username"] == "administrator"){
-                echo '<a href="management.php" style="margin-right: 1%">Management</a>';
+                echo '<a class="btn" href="management.php" style="margin-right: 1%">Management</a>';
             }
             ?>
             <?php
             if ($_SESSION["username"] != "Guest"){
-                echo '<a href="forum.php" style="margin-right: 1%">Forum</a>';
+                echo '<a class="btn" href="forum.php" style="margin-right: 1%">Forum</a>';
             }
             ?>
         </div>
         <div id="navcentre">
             <h4>Simple Moodle Improved</h4></div>
         <div id="navright">
-            <a href="login.html" style="margin-right: 1%">Login</a>
-            <a href="signup.html">Signup</a>
+            <a class="btn" href="login.html" style="margin-right: 1%">Login</a>
+            <a class="btn" href="signup.html">Signup</a>
         </div>
     </div>
 </header>
@@ -70,7 +70,7 @@ addCourse();
                 <input name="course-description" type="text">
             </label>
             <br>
-            <input type="submit" value="Submit">
+            <input class="btn" type="submit" value="Submit">
         </form>
     </div>
 </div>

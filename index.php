@@ -8,8 +8,7 @@ if (!isset($_SESSION["username"]))
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="courses.css">
-    <title>Home</title>
+    <title>S.I.M.</title>
 </head>
 <body>
 <header>
@@ -36,30 +35,20 @@ if (!isset($_SESSION["username"]))
         </div>
     </div>
 </header>
-<div id="grid">
-
-    <?php
-    //Apriamo il db
-    $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
-
-    //Leggiamo il numero di corsi
-    $query_result = $db->query("SELECT * FROM Courses;");
-    $row = $query_result->fetchArray();
-
-    while ($row) {
-        /** @noinspection CssUnknownTarget */
-        echo '<div class="grid-card">
-                                <div class="image-div" style="background-image:url(\''. $row[3] .' \') ;"> </div>
-                                <h3><a class="course-link" href="course.php?id='. $row[0] .'">' . $row[1] .'</a></h3>
-                                <p>' . $row[2] .'</p> </div>';
-        $row = $query_result->fetchArray();
-    }
-    ?>
+<div class="content">
+    <h3 class="article">
+        Welcome to the home page of SecureClass a revolutionary software to manage all your lessons with security.
+    </h3>
+    <p class="article">
+        Enjoy the experience!
+    </p>
 </div>
 <footer id="footer">
     <div id="loginfo">
         Logged in as: <?php echo $_SESSION["username"]."."; ?>
-        <a href="logout.php">Logout.</a>
+        <?php if ($_SESSION["username"] != "Guest") {
+            echo "<a href='logout.php'>Logout.</a>";
+        }?>
     </div>
 </footer>
 </body>
