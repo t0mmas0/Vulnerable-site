@@ -34,12 +34,13 @@ addcontent();
             <a class="btn" href="courses.php">Courses</a>
             <?php
             if ($_SESSION["username"] == "administrator"){
-                echo '<button class="btn" href="management.php" style="margin-right: 1%">Management</button>';
+                echo '<a class="btn" href="management.php" style="margin-right: 1%">Management</a>';
+                echo '<a class="btn" href="find.php" style="margin-right: 1%">Finder</a>';
             }
             ?>
             <?php
             if ($_SESSION["username"] != "Guest"){
-                echo '<button class="btn" href="forum.php" style="margin-right: 1%">Forum</button>';
+                echo '<a class="btn" href="forum.php" style="margin-right: 1%">Forum</a>';
             }
             ?>
         </div>

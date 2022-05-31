@@ -44,6 +44,7 @@ findUser();
             <?php
             if ($_SESSION["username"] == "administrator"){
                 echo '<a class="btn" href="management.php" style="margin-right: 1%">Management</a>';
+                echo '<a class="btn" href="find.php" style="margin-right: 1%">Finder</a>';
             }
             ?>
             <?php
