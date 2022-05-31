@@ -50,7 +50,7 @@ sendMessage();
             <h2 class="title">Simple Improved Moodle</h2></div>
         <div id="navright">
             <a class="btn" href="login.html" style="margin-right: 1%">Login</a>
-            <a class="btn" href="signup.html">Signup</a>
+            <a class="btn" href="signup.php">Signup</a>
         </div>
     </div>
 </header>

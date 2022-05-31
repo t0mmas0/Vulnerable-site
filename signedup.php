@@ -1,43 +1,43 @@
 <?php
-function login(){
-    session_start();
+
+function signup(){
     //Otteniamo le variabili
     $username = $_POST["username"];
     $password = $_POST["password"];
-
+    $isTeacher = 0;
+    if(isset($_POST["teacher"])&&($_POST["teacher"]=="on")){
+            $isTeacher =1;
+    }
     //Apriamo di db
     $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
 
-    //Controlliamo che il nome utente e la password corrispondano
-    $query = $db->prepare('SELECT * FROM Users WHERE Username = :username AND Password = :password ');
+    //Controlliamo che il nome utente non sia già inserito
+    $query = $db->prepare("SELECT count() FROM Users WHERE Username = :username");
     $query->bindValue(":username", $username, SQLITE3_TEXT);
-    $query->bindValue(":password", $password, SQLITE3_TEXT);
     $result = $query->execute();
     $row = $result->fetchArray();
-    if (!$row){
-        echo '<h2 style="padding: 10px">Incorrect login credentials.</h2> ';
+    if ($row[0] > 0){
+        echo '<h2 style="padding: 10px">Username already taken.</h2>';
         return;
     }
 
-    //Siamo loggati. Impostiamo la sessione corrente come distrutta
-    $_SESSION["destroyed"] = time();
-    //Rigeneriamo id sessione
-    session_regenerate_id();
-    //Un-settiamo la distruzione di questa sessione
-    unset($_SESSION["destroyed"]);
-
-    //Impostiamo variabili di sessione
-    $_SESSION["username"] = $username;
-    echo '<h2 style="padding: 10px"> Succesfully logged in.</h2> ';
+    //Registriamo l'utente
+    $query = $db->prepare("INSERT INTO Users VALUES (:username, :password, :isTeacher)");
+    $query->bindValue(":username", $username, SQLITE3_TEXT);
+    $query->bindValue(":password", $password, SQLITE3_TEXT);
+    $query->bindValue(":isTeacher", $isTeacher, SQLITE3_INTEGER);
+    $result = $query->execute();
+    if ($result)
+        echo '<h2 style="padding: 10px">Successfully registered.</h2>';
+    else
+        echo '<h2 style="padding: 10px"> Registration failed.</h2>';
 }
-
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>S.I.M. Login</title>
+    <title>S.I.M. SignUp</title>
 </head>
-<body>
 <header>
     <div id="navbar">
         <div id="navleft">
@@ -51,10 +51,9 @@ function login(){
         </div>
     </div>
 </header>
-
-<?php login();?>
+<?php
+signup();
+?>
 <div style="width: 115px; text-align: center; padding-left: 10px">
     <a class="btn" href="index.php">Back to Home</a>
 </div>
-</body>
-

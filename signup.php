@@ -1,43 +1,20 @@
 <?php
-
-function signup(){
-    //Otteniamo le variabili
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    //Apriamo di db
-    $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
-
-    //Controlliamo che il nome utente non sia già inserito
-    $query = $db->prepare("SELECT count() FROM Users WHERE Username = :username");
-    $query->bindValue(":username", $username, SQLITE3_TEXT);
-    $result = $query->execute();
-    $row = $result->fetchArray();
-    if ($row[0] > 0){
-        echo '<h2 style="padding: 10px">Username already taken.</h2>';
-        return;
-    }
-
-    //Registriamo l'utente
-    $query = $db->prepare("INSERT INTO Users VALUES (:username, :password)");
-    $query->bindValue(":username", $username, SQLITE3_TEXT);
-    $query->bindValue(":password", $password, SQLITE3_TEXT);
-    $result = $query->execute();
-    if ($result)
-        echo '<h2 style="padding: 10px">Successfully registered.</h2>';
-    else
-        echo '<h2 style="padding: 10px"> Registration failed.</h2>';
-}
+    session_start();
 ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="style.css" rel="stylesheet">
     <title>S.I.M. SignUp</title>
 </head>
+<body>
 <header>
     <div id="navbar">
         <div id="navleft">
             <a class="btn" href="index.php" style="margin-right: 1%">Home</a>
+            <a class="btn" href="courses.php" style="margin-right: 1%">Courses</a>
+
         </div>
         <div id="navcentre">
             <h2 class="title">Simple Improved Moodle</h2></div>
@@ -47,9 +24,29 @@ function signup(){
         </div>
     </div>
 </header>
-<?php
-signup();
-?>
-<div style="width: 115px; text-align: center; padding-left: 10px">
-    <a class="btn" href="index.php">Back to Home</a>
-</div>
+        <div class="text">
+            <form action="signedup.php" method="post">
+                <h4>Use this webpage to register to moodle.</h4><br>
+                <label>
+                    Username
+                    <input name="username" type="text">
+                </label><br><br>
+                <label>
+                    Password
+                    <input name="password" type="password">
+                </label><br><br>
+                <?php
+                    if ($_SESSION["username"] == "administrator"){
+                      echo '
+                        <label>
+                            Is Teacher
+                            <input name="teacher" type="checkbox">
+                        </label><br><br>
+                        ';
+                    }
+                ?>
+                <input class="btn" type="submit" value="Submit"><br>
+            </form>
+        </div>
+</body>
+</html>

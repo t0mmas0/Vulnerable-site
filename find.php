@@ -53,7 +53,7 @@ function findUser(){
             <h4>Simple Moodle Improved</h4></div>
         <div id="navright">
             <a class="btn" href="login.html" style="margin-right: 1%">Login</a>
-            <a class="btn" href="signup.html">Signup</a>
+            <a class="btn" href="signup.php">Signup</a>
         </div>
     </div>
 </header>
