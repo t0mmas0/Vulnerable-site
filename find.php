@@ -14,19 +14,15 @@ function findUser(){
 
         //Search for user
         $result = $db->query('SELECT Username FROM Users where Username LIKE ' ."'%" . $_POST["username"] . "%';");
-
+        echo'<h4>The following users were identified:</h4>';
         $row = $result->fetchArray();
-
         while ($row){
-            echo $row[0] . "<br>";
+            echo "<p>". $row[0] . "</p>";
             $row = $result->fetchArray();
         }
 
     }
 }
-
-findUser();
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -73,6 +69,9 @@ findUser();
             <br>
             <input class="btn" type="submit" value="Submit">
         </form>
+    </div>
+    <div class="content">
+    <?php findUser();?>
     </div>
 </div>
 <footer id="footer">
