@@ -78,8 +78,6 @@ function showContent(){
         return;
     }
 
-    //Save course's administartor for later use
-    $administrator = $row[4];
 
     //Show title and description of the course
     echo '
@@ -109,8 +107,13 @@ function showContent(){
         $row = $query_result->fetchArray();
     }
 
+
+
+    //Save course's administartor for later use
+    $queryadmin = $db-> query("SELECT isTeacher from Users WHERE Username='".$_SESSION["username"]."';");
+    $row = $queryadmin ->fetchArray();
     //If user is an administrator of the course, show another section to add content
-    if ($_SESSION["username"] == $administrator){
+    if ($row[0]){
         echo '
                 <div class="card">
                     <div class="content">
