@@ -30,7 +30,7 @@ addcontent();
 <header>
     <div id="navbar">
         <div id="navleft">
-            <a href="index.php"class="btn">Home</a>
+            <a href="index.php" class="btn">Home</a>
             <a class="btn" href="courses.php">Courses</a>
             <?php
             if ($_SESSION["username"] == "administrator"){
