@@ -18,6 +18,17 @@ function sendMessage(){
     }
 }
 sendMessage();
+
+function showMessages(){
+    $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
+    $query_result = $db->query("SELECT * FROM Forum");
+    $row = $query_result->fetchArray();
+    while($row){
+        echo "<p>&lt;". $row[1]. "&gt;: " . $row[2] ."</p>";
+        $row = $query_result->fetchArray();
+    }
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -58,16 +69,6 @@ sendMessage();
 <div class="card" style="">
     <div class="content" style="overflow: scroll; height: 400px">
         <?php
-        function showMessages(){
-            $db = new SQLite3("SecureDB.sqlite", SQLITE3_OPEN_READWRITE);
-            $query_result = $db->query("SELECT * FROM Forum");
-            $row = $query_result->fetchArray();
-            while($row){
-                echo "<p>&lt;". $row[1]. "&gt;: " . $row[2] ."</p>";
-                $row = $query_result->fetchArray();
-            }
-        }
-
         showMessages();
         ?>
     </div>

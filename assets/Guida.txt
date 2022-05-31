@@ -1,0 +1,11 @@
+1) Far vedere che la cartella images non è accessibile
+2)Loggarsi/registrarsi come utente normale
+3)Aprire un paio di corsi a caso e vedere i contenuti
+4)Incollare payload XSS su forum, con richiesta aiuto
+5) - EMULARE accesso admin - Deve scrivere messaggio su forum
+6) Impostare cookie sessione 
+7) Accedere a pannello admin
+8) Creare nuovo corso
+9) Sql Injection su finder - Altro bersaglio
+10) Inserire immagine nel corso
+11) Fine

